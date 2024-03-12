@@ -1,13 +1,29 @@
 <h1>Angular Calculator</h1>
-<form>
+<form #myForm="ngForm">
   <div class="calculator">
+    <p *ngIf="additionAReference.errors?.['pattern']">
+      Only numerical characters with up to 1 decimal point are allowed.</p>
+    <p *ngIf="additionBReference.errors?.['pattern']">
+      Only numerical characters with up to 1 decimal point are allowed.</p>
+    <p *ngIf="subtractionAReference.errors?.['pattern']">
+      Only numerical characters with up to 1 decimal point are allowed.</p>
+    <p *ngIf="subtractionBReference.errors?.['pattern']">
+      Only numerical characters with up to 1 decimal point are allowed.</p>
+    <p *ngIf="multiplicationAReference.errors?.['pattern']">
+      Only numerical characters with up to 1 decimal point are allowed.</p>
+    <p *ngIf="multiplicationBReference.errors?.['pattern']">
+      Only numerical characters with up to 1 decimal point are allowed.</p>
+    <p *ngIf="divisionAReference.errors?.['pattern']">
+      Only numerical characters with up to 1 decimal point are allowed.</p>
+    <p *ngIf="divisionBReference.errors?.['pattern']">
+      Only numerical characters with up to 1 decimal point are allowed.</p>
     <h2>Sum:</h2>
     <div>
       <div class="calculations">
-        <input [(ngModel)]="additionA" name="additionA" pattern="^[0-9]+$" required>
+        <input [(ngModel)]="additionA" #additionAReference="ngModel" name="additionA" pattern="^\d+(\.\d+|\.)?$">
         <h3>+</h3>
-        <input [(ngModel)]="additionB" name="additionB" pattern="^[0-9]+$" required>
-        <input type='button' value="=" (click)="doAddition(additionA, additionB)">
+        <input [(ngModel)]="additionB" #additionBReference="ngModel" name="additionB" pattern="^\d+(\.\d+|\.)?$">
+        <button (click)="doAddition(additionA, additionB)" [disabled]="!additionA || !additionB || !additionAReference.valid || !additionBReference.valid">=</button>
       </div>
       <div class="results">
         <p>{{ displaySum }}</p>
@@ -17,10 +33,10 @@
     <h2>Difference:</h2>
     <div>
       <div class="calculations">
-        <input [(ngModel)]="subtractionA" name="subtractionA" pattern="^[0-9]+$" required>
+        <input [(ngModel)]="subtractionA" #subtractionAReference="ngModel" name="subtractionA" pattern="^\d+(\.\d+|\.)?$">
         <h3>-</h3>
-        <input [(ngModel)]="subtractionB" name="subtractionB" pattern="^[0-9]+$" required>
-        <input type='button' value="=" (click)="doSubtraction(subtractionA, subtractionB)">
+        <input [(ngModel)]="subtractionB" #subtractionBReference="ngModel" name="subtractionB" pattern="^\d+(\.\d+|\.)?$">
+        <button (click)="doSubtraction(subtractionA, subtractionB)" [disabled]="!subtractionA || !subtractionB || !subtractionAReference || !subtractionBReference" >=</button>
       </div>
       <div class="results">
         <p>{{ displayDifference }}</p>
@@ -30,10 +46,10 @@
     <h2>Product:</h2>
     <div>
       <div class="calculations">
-        <input [(ngModel)]="multiplicationA" name="multiplicationA" pattern="^[0-9]+$" required>
+        <input [(ngModel)]="multiplicationA" #multiplicationAReference="ngModel" name="multiplicationA" pattern="^\d+(\.\d+|\.)?$">
         <h3>*</h3>
-        <input [(ngModel)]="multiplicationB" name="multiplicationB" pattern="^[0-9]+$" required>
-        <input type='button' value="=" (click)="doMultiplication(multiplicationA, multiplicationB)">
+        <input [(ngModel)]="multiplicationB" #multiplicationBReference="ngModel" name="multiplicationB" pattern="^\d+(\.\d+|\.)?$">
+        <button (click)="doMultiplication(multiplicationA, multiplicationB)" [disabled]="!multiplicationA || !multiplicationB || !multiplicationAReference || !multiplicationBReference">=</button>
       </div>
       <div class="results">
         <p>{{ displayProduct }}</p>
@@ -43,10 +59,10 @@
     <h2>Quotient:</h2>
     <div>
       <div class="calculations">
-        <input [(ngModel)]="divisionA" name="divisionA" pattern="^[0-9]+$" required>
+        <input [(ngModel)]="divisionA" #divisionAReference="ngModel" name="divisionA" pattern="^\d+(\.\d+|\.)?$">
         <h3>/</h3>
-        <input [(ngModel)]="divisionB" name="divisionB" pattern="^[0-9]+$" required>
-        <input type='button' value="=" (click)="doDivision(divisionA, divisionB)">
+        <input [(ngModel)]="divisionB" #divisionBReference="ngModel" name="divisionB" pattern="^\d+(\.\d+|\.)?$">
+        <button (click)="doDivision(divisionA, divisionB)" [disabled]="!divisionA || !divisionB || !divisionAReference || !divisionBReference">=</button>
       </div>
       <div class="results">
         <p>{{ displayQuotient }}</p>

@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.1);
-  width: 600px;
+  width: 75%;
   justify-content: center;
   padding: 40px;
   border-radius: 5px;
@@ -20,13 +20,13 @@
   display: flex;
   height: 30px;
   align-items: center;
-  width: 65%;
+  width: 55%;
   box-sizing: border-box;
 }
 
 .results {
   height: 30px;
-  width: 165.5px;
+  width: 40%;
   text-align: right;
   padding: 2px;
   padding-right: 10px;
@@ -40,13 +40,5 @@ input {
   height: 30px;
   width: 30%;
   text-align: right;
-  padding-right: 10px;
   box-sizing: border-box;
-}
-
-input[type="button"] {
-  height: 30px;
-  width: 30px;
-  box-sizing: border-box;
-  cursor: pointer;
 }
